@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frazbase Shop - Premium Numerology Resources</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #003366;
+            --primary-light: #0056b3;
+            --accent: #66b2ff;
+            --accent-light: #99ccff;
+            --dark: #001a33;
+            --light: #f5f9ff;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-light);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background-color: var(--accent);
+            color: var(--primary) !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            color: var(--primary) !important;
+        }
+
+        .cart-button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: var(--primary);
+            font-size: 0.7em;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--accent), var(--primary-light));
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-light);
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 12px 25px;
+            background-color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            color: var(--primary);
+        }
+
+        .category-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .category-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 2.2em;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .store-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 0 60px;
+        }
+
+        .store-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .store-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .bestseller {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+
+        .new {
+            background-color: var(--success);
+        }
+
+        .item-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .store-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .store-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .item-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ratings {
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+
+        .store-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .store-item .description {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            color: var(--primary-light);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .original-price {
+            color: var(--gray);
+            text-decoration: line-through;
+            font-size: 0.9em;
+        }
+
+        .discount {
+            background-color: var(--success);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+
+        .button.secondary:hover {
+            background: var(--light);
+        }
+
+        .button.full {
+            width: 100%;
+        }
+
+        /* Featured Products */
+        .featured-products {
+            background-color: var(--light);
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--gray);
+            font-size: 1.1em;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .featured-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .featured-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 2;
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+
+        .featured-badge.new {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .featured-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .featured-item:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-content h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .featured-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .featured-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .featured-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .featured-rating {
+            color: #ffc107;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .featured-rating span {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            margin: 40px 0;
+        }
+
+        .testimonials-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 350px;
+            flex: 1 0 300px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: var(--primary);
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-stars {
+            color: var(--warning);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            padding: 60px 0;
+            color: white;
+            margin: 40px 0;
+        }
+
+        .newsletter-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .newsletter-form .button {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 12px 25px;
+        }
+
+        .newsletter-form .button:hover {
+            background-color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8em;
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h3 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: var(--accent-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #aaa;
+        }
+
+        .contact-info i {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: #aaa;
+            font-size: 0.9em;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-bottom i {
+            color: var(--danger);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 30px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .close-modal:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .modal-body h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .detail-title {
+            font-size: 1.6em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .detail-price {
+            font-size: 1.8em;
+            color: var(--primary-light);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .detail-description {
+            margin-bottom: 20px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .detail-features {
+            margin-bottom: 20px;
+        }
+
+        .detail-features h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li i {
+            color: var(--success);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quantity-selector label {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            background-color: var(--light);
+            border: 1px solid var(--gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .quantity-display {
+            width: 50px;
+            height: 35px;
+            border: 1px solid var(--gray);
+            border-left: none;
+            border-right: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Cart Modal */
+        .cart-items {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .cart-item-price {
+            color: var(--primary-light);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .remove-btn {
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .cart-summary {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .summary-row.total {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary);
+            border-top: 1px solid var(--gray);
+            padding-top: 15px;
+        }
+
+        .checkout-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Newsletter Tooltip */
+        .tooltip {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            z-index: 90;
+            display: none;
+        }
+
+        .tooltip-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .product-detail {
+                flex-direction: column;
+            }
+
+            .product-image {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .store-buttons {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-om"></i>
+                Frazbase
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover_your_numbers.html">Numerology Calculator</a></li>
+                <li><a href="today_numerology.html">Daily Insights</a></li>
+                <li><a href="store.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="nav-cta">
+                <i class="fas fa-phone-alt"></i> Get Consultation
+            </a>
+            <button class="cart-button" onclick="showCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Discover Your Numerological Path</h1>
+            <p>Explore our premium collection of numerology resources designed to help you unlock the hidden patterns in your life and achieve harmony through the power of numbers.</p>
+            <a href="#products" class="cta-button">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-subtitle">Our most popular numerology resources handpicked for you</p>
+            
+            <div class="featured-grid">
+                <!-- Featured Product 1 -->
+                <div class="featured-item">
+                    <div class="featured-badge">Best Seller</div>
+                    <div class="featured-image">
+                        <img src="/api/placeholder/600/400" alt="Complete Numerology Guide">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Complete Numerology Guide</h3>
+                        <p>The ultimate resource for understanding the ancient science of numerology and its application in modern life.</p>
+                        <div class="featured-details">
+                            <div class="featured-price">
+                                <span class="current-price">$49.99</span>
+                                <span class="original-price">$79.99</span>
+                                <span class="discount">-38%</span>
+                            </div>
+                            <div class="featured-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(243)</span>
+                            </div>
+                        </div>
+                        <button class="button full" onclick="addToCart('Complete Numerology Guide', 49.99)">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Featured Product 2 -->
+                <div class="featured-item">
+                    <div class="featured-badge new">New</div>
+                    <div class="featured-image">
+                        <img src="/api/placeholder/600/400" alt="Numerology Mastery Course">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Numerology Mastery Course</h3>
+                        <p>A comprehensive online course that teaches you how to become a numerology expert in just 8 weeks.</p>
+                        <div class="featured-details">
+                            <div class="featured-price">
+                                <span class="current-price">$129.99</span>
+                                <span class="original-price">$199.99</span>
+                                <span class="discount">-35%</span>
+                            </div>
+                            <div class="featured-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(87)</span>
+                            </div>
+                        </div>
+                        <button class="button full" onclick="addToCart('Numerology Mastery Course', 129.99)">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <div class="container">
+        <div class="category-tabs">
+            <div class="category-tab active" onclick="filterCategory('all')">All Products</div>
+            <div class="category-tab" onclick="filterCategory('books')">Books</div>
+            <div class="category-tab" onclick="filterCategory('digital')">Digital Products</div>
+            <div class="category-tab" onclick="filterCategory('courses')">Courses</div>
+            <div class="category-tab" onclick="filterCategory('tools')">Numerology Tools</div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container products-header">
+            <h2 class="section-title">Our Premium Collection</h2>
+            <p>Handpicked resources to guide your numerological journey</p>
+        </div>
+
+        <div class="container store-container">
+            <!-- Product 1 -->
+            <div class="store-item" data-category="books">
+                <div class="item-badge bestseller">Bestseller</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/400/300" alt="Numerology for Beginners">
+                </div>
+                <div class="item-content">
+                    <div class="ratings">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(128)</span>
+                    </div>
+                    <h3>Numerology for Beginners</h3>
+                    <p class="description">Learn the basics of numerology and how numbers influence your life. Perfect for beginners looking to start their numerological journey.</p>
+                    <div class="price-container">
+                        <span class="current-price">$15.99</span>
+                        <span class="original-price">$21.99</span>
+                        <span class="discount">-27%</span>
+                    </div>
+                    <div class="store-buttons">
+                        <button class="button" onclick="addToCart('Numerology for Beginners', 15.99)">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="button secondary" onclick="showDetails('Numerology for Beginners', 'An essential guide for anyone starting their numerology journey. This comprehensive book covers the fundamentals of numerology, including how to calculate your life path number, destiny number, and personal year number. Learn how numbers influence different aspects of your life and how to interpret them for greater insight and personal growth.', '/api/placeholder/400/300', 15.99, 21.99, 'books')">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="store-item" data-category="books">
+                <div class="item-image">
+                    <img src="/api/placeholder/400/300" alt="Numerology Charts">
+                </div>
+                <div class="item-content">
+                    <div class="ratings">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(84)</span>
+                    </div>
+                    <h3>Numerology Charts & Guides</h3>
+                    <p class="description">Comprehensive charts and guides to calculate and interpret your personal numerology profile with ease.</p>
+                    <div class="price-container">
+                        <span class="current-price">$18.50</span>
+                    </div>
+                    <div class="store-buttons">
+                        <button class="button" onclick="addToCart('Numerology Charts & Guides', 18.50)">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="button secondary" onclick="showDetails('Numerology Charts & Guides', 'This comprehensive collection includes 25 printable charts and guides to help you calculate and interpret your numerology numbers. Perfect for beginners and advanced practitioners alike.', '/api/placeholder/400/300', 18.50, 18.50, 'books')">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Stay updated with our latest numerology insights, special offers, and exclusive content.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="button">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-om"></i> Frazbase
+                    </a>
+                    <p class="footer-description">Unlocking the ancient wisdom of numerology to guide your spiritual journey and personal growth.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="discover_your_numbers.html">Numerology Calculator</a></li>
+                        <li><a href="today_numerology.html">Daily Insights</a></li>
+                        <li><a href="store.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Numerology Blog</a></li>
+                        <li><a href="#">Free Guides</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Spiritual Way, Harmony City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@frazbase.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frazbase. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> for spiritual seekers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // GSAP animations for featured items
+            gsap.from('.featured-item', {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+        });
+
+        // Category filter functionality
+        function filterCategory(category) {
+            const storeItems = document.querySelectorAll('.store-item');
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            
+            // Update active tab
+            categoryTabs.forEach(tab => {
+                if (tab.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && tab.textContent.includes('All'))) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Filter items
+            storeItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'flex';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Shopping cart functionality
+        let cartCount = 0;
+        let cartItems = [];
+
+        function addToCart(name, price) {
+            cartCount++;
+            document.querySelector('.cart-count').textContent = cartCount;
+            
+            // Add item to cart array
+            const existingItem = cartItems.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cartItems.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            // Show confirmation message
+            alert(`${name} added to cart!`);
+        }
+
+        // Product details modal
+        function showDetails(name, description, image, price, originalPrice, category) {
+            alert(`Product Details: ${name}\n${description}\nPrice: $${price}`);
+        }
+
+        // Shopping cart modal
+        function showCart() {
+            if (cartCount === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            let message = 'Your Cart:\n\n';
+            let total = 0;
+            
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${item.name} - $${item.price} x ${item.quantity} = $${itemTotal.toFixed(2)}\n`;
+            });
+            
+            message += `\nTotal: $${total.toFixed(2)}`;
+            alert(message);
+        }
+    </script>
+</body>
+</html>
