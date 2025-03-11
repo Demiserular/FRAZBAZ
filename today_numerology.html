@@ -323,6 +323,84 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media screen and (max-width: 350px) {
+            /* Container adjustments */
+            .container {
+                padding: 0 10px;
+                width: 100%;
+            }
+
+            /* Navbar adjustments */
+            .nav-container {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            .logo {
+                font-size: 1.4em;
+                margin-bottom: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 8px 0;
+            }
+
+            .nav-cta {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+
+            /* Today's numerology section adjustments */
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            /* Daily Numbers Section adjustments */
+            .daily-numbers-grid {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+
+            .number-card {
+                padding: 15px;
+            }
+
+            .number-card h3 {
+                font-size: 1.5em;
+            }
+
+            .number-card .number {
+                font-size: 2em;
+            }
+        }
     </style>
 </head>
 
