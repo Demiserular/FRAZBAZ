@@ -309,6 +309,46 @@
             transform: translateY(-5px);
         }
 
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary);
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mobile-nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8em;
+        }
+
+        .mobile-nav-links i {
+            font-size: 1.5em;
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav-links span {
+            font-size: 0.7em;
+        }
+
         /* Media Queries */
         @media (max-width: 768px) {
             h1 {
@@ -332,33 +372,17 @@
             }
 
             /* Navbar adjustments */
-            .nav-container {
-                flex-direction: column;
-                padding: 10px 0;
+            .navbar {
+                display: none;
             }
 
-            .logo {
-                font-size: 1.4em;
-                margin-bottom: 10px;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 8px;
-                width: 100%;
-                text-align: center;
-                margin: 10px 0;
-            }
-
-            .nav-links a {
+            .mobile-nav {
                 display: block;
-                padding: 8px 0;
             }
 
-            .nav-cta {
-                width: 100%;
-                text-align: center;
-                padding: 10px;
+            /* Adjust body padding to account for fixed bottom nav */
+            body {
+                padding-bottom: 70px;
             }
 
             /* Today's numerology section adjustments */
@@ -420,6 +444,42 @@
                 <li><a href="#" class="nav-cta">Get Consultation</a></li>
             </ul>
         </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="discover_your_numbers.html">
+                    <i class="fas fa-calculator"></i>
+                    <span>Calculate</span>
+                </a>
+            </li>
+            <li>
+                <a href="today_numerology.html">
+                    <i class="fas fa-sun"></i>
+                    <span>Today</span>
+                </a>
+            </li>
+            <li>
+                <a href="store.html">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Shop</span>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
