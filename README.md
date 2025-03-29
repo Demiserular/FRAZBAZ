@@ -28,4 +28,5 @@ A modern numerology website offering numerology calculations, daily insights, an
 
 ## Deployment
 
-This website is deployed using GitHub Pages.
+This website is deployed using netlify. on https://maddy4u.netlify.app/
+
